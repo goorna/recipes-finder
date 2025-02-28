@@ -12,4 +12,8 @@ export default defineNuxtConfig({
       },
     },
   },
+  css: [
+    "~/assets/style/root.scss",
+    "~/assets/style/normalize.css",
+  ],
 });
