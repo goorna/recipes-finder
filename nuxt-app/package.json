@@ -10,14 +10,17 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@primeuix/themes": "^1.0.0",
+    "@nuxt/image": "^1.9.0",
+    "@pinia/nuxt": "^0.10.1",
     "nuxt": "^3.15.4",
-    "primevue": "^4.3.1",
+    "pinia": "^3.0.1",
+    "vite-svg-loader": "^5.1.0",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@primevue/nuxt-module": "^4.3.1",
-    "sass": "^1.85.1"
+    "sass": "^1.85.1",
+    "typescript": "^5.7.3",
+    "vue-tsc": "^2.1.10"
   }
 }

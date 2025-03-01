@@ -1,7 +1,7 @@
 <template>
   <div class="recipes-finder">
     <SearchBar />
-    <RecipesList v-if="recipes" :recipes="recipes" />
+    <RecipesList :recipes="recipes" />
   </div>
 </template>
 
@@ -10,16 +10,13 @@ import { getRecipesList } from "~/services/recipes/list";
 import { showToast } from "~/utility/toast";
 import RecipesList from "~/components/RecipesList/RecipesList.vue";
 
-const { data: recipes } = getRecipesList();
-
+const { data: recipes } = getRecipesList(); // TODO: get list from store
 </script>
 
 <style lang="scss" scoped>
 @use "~/assets/style/mixins";
 
 .recipes-finder {
-  margin: auto;
-
   @include mixins.breakpointDesktop {
     max-width: var(--container-desktop-width);
   }
