@@ -9,7 +9,7 @@
           <Icon name="home" size="m" color="primary" />
           <span>Home</span>
         </NuxtLink>
-        <NuxtLink to="/favourites">
+        <NuxtLink to="/favorites">
           <Icon name="heart" size="m" color="primary" />
           <span>Favourites</span>
         </NuxtLink>
