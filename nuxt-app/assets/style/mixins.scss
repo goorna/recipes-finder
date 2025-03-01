@@ -1,0 +1,15 @@
+// screen sizes
+$desktop: 1024px;
+$tablet: 768px;
+
+@mixin breakpointDesktop() {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin breakpointTablet() {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}

@@ -1,8 +1,50 @@
 :root {
   
   /** Colors **/
+  --color-primary: #3b8b13;
+  --color-primary-dark: #246006;
 
-  --color-primary: #3567f6;
-  --color-primary-hover: #183a99;
-  --color-primary-pressed: #102560;
+  --color-white: #ffffff;
+
+  --color-border: #e2e2e2;
+
+  /** Sizes **/
+
+  --container-desktop-width: 1024px;
+
+  --logo-height-mobile: 60px;
+  --logo-height-desktop: 100px;
+
+  --searchbar-width-desktop: 200px;
+
+  --no-results-label-max-width: 500px;
+
+  --card-image-height: 200px;
+  --details-image-height-mobile: 200px;
+  --details-image-height-desktop: 300px;
+
+  --modal-header-height-mobile: 62px;
+
+  /** Spaces (base: 2px) **/
+  --space-1x: 2px;
+  --space-2x: 4px;
+  --space-3x: 6px;
+  --space-4x: 8px;
+  --space-5x: 10px;
+  --space-6x: 12px;
+  --space-7x: 14px;
+  --space-8x: 16px;
+  --space-9x: 18px;
+  --space-10x: 20px;
+  --space-11x: 22px;
+  --space-12x: 24px;
+  --space-13x: 26px;
+  --space-14x: 28px;
+  --space-15x: 30px;
+  --space-16x: 32px;
+
+  /** Misc **/
+
+  --border-radius-8: 8px;
+  --border-radius-16: 16px;
 } 

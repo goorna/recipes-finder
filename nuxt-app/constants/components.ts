@@ -1,0 +1,1 @@
+export const RECIPE_FALLBACK_IMAGE = "/images/recipes/placeholder.jpg"

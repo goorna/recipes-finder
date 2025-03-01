@@ -1,0 +1,102 @@
+@import "./mixins.scss";
+
+/* Default */
+
+body {
+  font-family: "Trebuchet MS";
+  color: #2b2b2b;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+
+/* Font classes */
+
+.recipe-title {
+  font-size: 20px;
+  @include breakpointDesktop {
+    font-size: 35px;
+  }
+}
+
+.recipe-description {
+  font-size: 14px;
+  @include breakpointDesktop {
+    font-size: 14px;
+  }
+}
+
+.label-xs {
+  font-size: 10px;
+}
+
+.label-s {
+  font-size: 10px;
+
+  @include breakpointDesktop {
+    font-size: 12px;
+  }
+}
+
+.label-m {
+  font-size: 12px;
+
+  @include breakpointDesktop {
+    font-size: 14px;
+  }
+}
+
+.label-l {
+  font-size: 18px;
+
+  @include breakpointDesktop {
+    font-size: 24px;
+  }
+}
+
+.label-xl {
+  font-size: 22px;
+
+  @include breakpointDesktop {
+    font-size: 30px;
+  }
+}
+
+.label-xxl {
+  font-size: 28px;
+
+  @include breakpointDesktop {
+    font-size: 34px;
+  }
+}
+
+/* Text colors */
+
+.text-color-white {
+  color: var(--color-white)
+}
+
+.text-color-primary {
+  color: var(--color-primary)
+}
+
+.text-color-primary-dark {
+  color: var(--color-primary-dark)
+}
+
+/* Text styles */
+
+.text-italic {
+  font-style: italic;
+}
+
