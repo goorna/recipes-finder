@@ -74,6 +74,7 @@ const recipePrepTime = computed(
   border-radius: var(--border-radius-16);
   overflow: hidden;
   box-shadow: var(--space-1x) var(--space-1x) var(--space-1x) rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 
   &__image {
     width: 100%;

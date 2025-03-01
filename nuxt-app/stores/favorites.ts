@@ -1,12 +1,10 @@
 import { defineStore } from "pinia";
 import { getRecipeDetails } from "~/services/recipes/details";
+import type { Recipe } from "~/types/api/recipe";
 
 export const useFavoritesStore = defineStore("favorites", () => {
 
-  const favorites = () => {
-    const storedFavorites = localStorage.getItem("favorites");
-    return storedFavorites ? JSON.parse(storedFavorites) : [];
-  }
+  const favorites = ref<Recipe[]>([]);
 
   const addToFavorites = async (recipeId: string) => {
     try {
@@ -16,25 +14,26 @@ export const useFavoritesStore = defineStore("favorites", () => {
         return;
       }
 
-      let favorites = [];
+      let tempFavorites = [];
       const storedFavorites = localStorage.getItem("favorites");
 
       if (storedFavorites) {
         try {
-          favorites = JSON.parse(storedFavorites);
-          if (!Array.isArray(favorites)) {
+          tempFavorites = JSON.parse(storedFavorites);
+          if (!Array.isArray(tempFavorites)) {
             console.warn("Stored favorites is not an array, resetting");
-            favorites = [];
+            tempFavorites = [];
           }
         } catch (error) {
           console.error("Error parsing favorites from localStorage:", error);
-          favorites = [];
+          tempFavorites = [];
         }
       }
 
-      favorites.push(recipe);
+      tempFavorites.push(recipe);
 
-      localStorage.setItem("favorites", JSON.stringify(favorites));
+      localStorage.setItem("favorites", JSON.stringify(tempFavorites));
+      favorites.value = tempFavorites;
     } catch (error) {
       console.error("Error adding to favorites:", error);
     }
@@ -42,16 +41,16 @@ export const useFavoritesStore = defineStore("favorites", () => {
 
   const removeFromFavorites = (recipeId: string) => {
     try {
-      let favorites = [];
+      let tempFavorites = [];
       const storedFavorites = localStorage.getItem("favorites");
 
       if (storedFavorites) {
         try {
-          favorites = JSON.parse(storedFavorites);
+          tempFavorites = JSON.parse(storedFavorites);
 
-          if (!Array.isArray(favorites)) {
+          if (!Array.isArray(tempFavorites)) {
             console.warn("Stored favorites is not an array, resetting");
-            favorites = [];
+            tempFavorites = [];
             return;
           }
         } catch (error) {
@@ -60,11 +59,12 @@ export const useFavoritesStore = defineStore("favorites", () => {
         }
       }
 
-      const newFavorites = favorites.filter(
+      const newFavorites = tempFavorites.filter(
         (favorite) => favorite.id !== recipeId
       );
 
       localStorage.setItem("favorites", JSON.stringify(newFavorites));
+      favorites.value = newFavorites;
     } catch (error) {
       console.error("Error removing from favorites:", error);
     }
@@ -76,10 +76,10 @@ export const useFavoritesStore = defineStore("favorites", () => {
     return recipe;
   };
 
-  const isFavorite = (recipeId: string) => {
-    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-    return favorites.some((favorite: any) => favorite.id === recipeId);
-  }
+  onMounted(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    favorites.value = storedFavorites ? JSON.parse(storedFavorites) : [];
+  })
 
-  return { favorites, isFavorite, loadFromFavorites, addToFavorites, removeFromFavorites };
+  return { favorites, loadFromFavorites, addToFavorites, removeFromFavorites };
 });

@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 interface NoResultsProps {
-  isFavoritesList: boolean;
+  isFavoritesList?: boolean;
 }
 
 const props = withDefaults(defineProps<NoResultsProps>(), {
