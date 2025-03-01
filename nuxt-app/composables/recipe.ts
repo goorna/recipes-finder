@@ -22,7 +22,7 @@ interface UseRecipeReturn {
 
 export const useRecipe = (): UseRecipeReturn => {
   const { recipeId } = storeToRefs(useModalStore());
-  const { loadFromFavorites, isFavorite } = useFavoritesStore();
+  const { loadFromFavorites } = useFavoritesStore();
 
   const recipeDetails = ref<RecipeDetails | null>(null);
 

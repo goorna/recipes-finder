@@ -31,6 +31,7 @@ h5 {
 
 .recipe-description {
   font-size: 14px;
+  
   @include breakpointDesktop {
     font-size: 14px;
   }

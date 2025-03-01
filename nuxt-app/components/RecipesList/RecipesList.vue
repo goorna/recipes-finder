@@ -20,7 +20,7 @@ import NoResults from "~/components/NoResults/NoResults.vue";
 
 interface RecipesListProps {
   recipes: Recipe[];
-  isFavoritesList: boolean;
+  isFavoritesList?: boolean;
 }
 
 const props = withDefaults(defineProps<RecipesListProps>(), {
@@ -34,6 +34,8 @@ const { query } = storeToRefs(useSearchStore());
 
 const filteredRecipes = computed(() => {
   const searchQuery = query.value.toLowerCase();
+
+  if(!props.recipes.length) return [];
 
   return props.recipes.filter((recipe) => {
     const titleMatches = recipe.title.toLowerCase().includes(searchQuery);
