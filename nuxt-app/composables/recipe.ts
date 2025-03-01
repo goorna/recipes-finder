@@ -1,8 +1,10 @@
 import type { Recipe } from "~/types/api/recipe";
 import { useModalStore } from "~/stores/modal";
+import { useFavoritesStore } from "~/stores/favorites";
 import { getRecipeDetails } from "~/services/recipes/details";
 
 export interface RecipeDetails {
+  id: string;
   image: string;
   allergens: string[];
   prepTime: Recipe["prep_time"];
@@ -20,16 +22,23 @@ interface UseRecipeReturn {
 
 export const useRecipe = (): UseRecipeReturn => {
   const { recipeId } = storeToRefs(useModalStore());
+  const { loadFromFavorites, isFavorite } = useFavoritesStore();
 
   const recipeDetails = ref<RecipeDetails | null>(null);
 
   watchEffect(async () => {
     if (!recipeId.value) return;
 
-    const recipe = await getRecipeDetails(recipeId.value);
+
+    let recipe = loadFromFavorites(recipeId.value);
+
+    if(!recipe) {
+      recipe = await getRecipeDetails(recipeId.value);
+    }
 
     if (recipe) {
       recipeDetails.value = {
+        id: recipe.id,
         image: `/images/recipes/${recipe.id}.jpg`,
         allergens: recipe.allergens,
         prepTime: recipe.prep_time,
@@ -47,3 +56,4 @@ export const useRecipe = (): UseRecipeReturn => {
     recipeDetails,
   };
 };
+

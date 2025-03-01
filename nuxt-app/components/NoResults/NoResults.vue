@@ -10,10 +10,28 @@
       important.
     </p>
     <p class="label-xl text-color-primary-dark text-italic">
-      No results here! Get out!
+      {{ customMessage }}
     </p>
   </div>
 </template>
+
+<script setup lang="ts">
+interface NoResultsProps {
+  isFavoritesList: boolean;
+}
+
+const props = withDefaults(defineProps<NoResultsProps>(), {
+  isFavoritesList: false,
+});
+
+const customMessage = computed(() => {
+  if (props.isFavoritesList) {
+    return "No favorites here! Go add someone!";
+  }
+
+  return "No results here! Get out!";
+});
+</script>
 
 <style lang="scss" scoped>
 @use "~/assets/style/mixins";
