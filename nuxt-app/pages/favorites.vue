@@ -1,16 +1,21 @@
 <template>
   <div class="recipes-finder">
     <SearchBar />
-    <RecipesList :recipes="recipes" />
+    <RecipesList :recipes="recipes" :is-favorites-list="true" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useFavoritesStore } from "~/stores/favorites";
 import { getRecipesList } from "~/services/recipes/list";
-import { showToast } from "~/utility/toast";
 import RecipesList from "~/components/RecipesList/RecipesList.vue";
 
-const { data: recipes } = getRecipesList(); // TODO: get list from store
+const recipes = ref<Recipe[]>([])
+
+const { favorites } = useFavoritesStore();
+recipes.value = favorites();
+
 </script>
 
 <style lang="scss" scoped>

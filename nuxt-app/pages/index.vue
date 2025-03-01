@@ -7,7 +7,6 @@
 
 <script setup lang="ts">
 import { getRecipesList } from "~/services/recipes/list";
-import { showToast } from "~/utility/toast";
 import RecipesList from "~/components/RecipesList/RecipesList.vue";
 
 const { data: recipes } = getRecipesList();

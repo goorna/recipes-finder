@@ -7,7 +7,7 @@
       :recipe="recipe"
       @click="openModal(recipe.id)"
     />
-    <NoResults v-else />
+    <NoResults v-else :is-favorites-list="props.isFavoritesList" />
   </div>
 </template>
 
@@ -20,10 +20,12 @@ import NoResults from "~/components/NoResults/NoResults.vue";
 
 interface RecipesListProps {
   recipes: Recipe[];
+  isFavoritesList: boolean;
 }
 
 const props = withDefaults(defineProps<RecipesListProps>(), {
   recipes: [],
+  isFavoritesList: false
 });
 
 const { openModal } = useModalStore();
