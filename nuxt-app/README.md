@@ -1,75 +1,106 @@
-# Nuxt Minimal Starter
+# Recipe Finder
+A web application for discovering, searching, and saving your favorite recipes. Built with Nuxt.js and modern web technologies.
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Project Overview
+Recipe Finder allows users to:
 
-## Setup
+Search for recipes using keywords
 
-Make sure to install dependencies:
+View detailed recipe information
 
-```bash
-# npm
-npm install
+Save favorite recipes for later reference
 
-# pnpm
-pnpm install
+Access saved recipes even when offline
 
-# yarn
-yarn install
+## Technology Stack
+Framework : Nuxt.js 3 - Vue.js framework
 
-# bun
-bun install
-```
+State Management : Pinia - Intuitive, type-safe store for Vue
 
-## Development Server
+UI Components : Custom components with responsive design
 
-Start the development server on `http://localhost:3000`:
+Storage : Browser localStorage for saving favorite recipes
 
-```bash
-# npm
-npm run dev
+Project Structure
+recipes-finder/
+├── components/       # Reusable Vue components
+├── composables/      # Shared composition functions
+├── layouts/          # Page layouts
+├── pages/            # Application routes
+├── public/           # Static assets
+├── services/         # API service modules
+│   └── recipes/      # Recipe-related API services
+├── stores/           # Pinia stores
+│   ├── favorites.ts  # Favorites management
+│   └── search.ts     # Search functionality
+├── types/            # TypeScript type definitions
+└── utils/            # Utility functions
 
-# pnpm
-pnpm dev
+## Key Features
 
-# yarn
-yarn dev
+### Search Functionality
+The application uses a dedicated search store to manage query state and synchronize with URL parameters, allowing for shareable search results and browser history integration.
 
-# bun
-bun run dev
-```
+### Favorites Management
+Users can save recipes to their favorites, which are stored in the browser's localStorage.
 
-## Production
 
-Build the application for production:
+## Setup and Development
 
-```bash
-# npm
-npm run build
+Prerequisites
+Node.js (v16 or later)
 
-# pnpm
-pnpm build
+npm or yarn
 
-# yarn
-yarn build
+### Installation
 
-# bun
-bun run build
-```
+### npm
+```npm install```
 
-Locally preview production build:
+### yarn
+```yarn install```
 
-```bash
-# npm
-npm run preview
+### Development Server
 
-# pnpm
-pnpm preview
+Start the development server on http://localhost:3000:
 
-# yarn
-yarn preview
+### npm
+```npm run dev```
 
-# bun
-bun run preview
-```
+### yarn
+```yarn dev```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### Test
+
+### npm
+```npm run test```
+
+### yarn
+```yarn test```
+
+### Production Build
+
+## npm
+```npm run build```
+```npm run preview```
+
+## yarn
+```yarn build```
+```yarn preview```
+
+
+## Some things I would have done differently if this had been a project for the company I work for:
+- Managing translations through tools like Weblate (or Contentful)  
+- Error management system  
+- Monitoring via DataDog  
+- Creating a design system (a component library to import/reuse across multiple projects) 
+- Improve test code coverage 
+- Hooks pre-commit/pre-push
+- Merge request template
+
+## Choices and Limitations
+- **API:** I used a mocking service and the same endpoint for both the list and the details. Normally, I would expect two separate endpoints.  
+- **UI Kit:** Initially, I considered using a UI kit for components (like PrimeVue), but then I thought it would be more useful for you to see how I approach building custom components.  
+- **Nuxt:** The application is not complex, but I saw it as something that could potentially grow with the addition of new features (user accounts, recipe creation, and more). A framework seemed like the best choice for the project's future evolution.
+
+

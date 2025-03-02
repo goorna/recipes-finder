@@ -1,5 +1,9 @@
 import { defineStore } from "pinia";
 
+/**
+ * store for managing search functionality
+ * handles search query state and URL synchronization
+ */
 export const useSearchStore = defineStore("search", () => {
   const query = ref("");
 

@@ -85,7 +85,7 @@ const recipePrepTime = computed(
   &__details {
     display: grid;
     padding: var(--space-8x);
-    gap: var(--space-8x);
+    gap: var(--space-6x);
 
     &--description {
       display: block;

@@ -1,10 +1,11 @@
-@import "./mixins.scss";
+@use "./mixins" as mixins;
 
 /* Default */
 
 body {
-  font-family: "Trebuchet MS";
+  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
   color: #2b2b2b;
+  font-size: 16px;
 }
 
 p {
@@ -15,84 +16,94 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   margin: 0;
+  line-height: 1.2;
 }
-
 
 /* Font classes */
 
 .recipe-title {
-  font-size: 20px;
-  @include breakpointDesktop {
-    font-size: 35px;
+  font-size: 1.25rem;
+
+  @include mixins.breakpointDesktop {
+    font-size: 1.375rem;
   }
 }
 
-.recipe-description {
-  font-size: 14px;
-  
-  @include breakpointDesktop {
-    font-size: 14px;
+.recipe-card-description {
+  font-size: 0.875rem;
+
+  @include mixins.breakpointDesktop {
+    font-size: 0.875rem;
+  }
+}
+
+.modal-text {
+  font-size: 0.875rem;
+
+  @include mixins.breakpointDesktop {
+    font-size: 1rem;
   }
 }
 
 .label-xs {
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 
 .label-s {
-  font-size: 10px;
+  font-size: 0.75rem;
 
-  @include breakpointDesktop {
-    font-size: 12px;
+  @include mixins.breakpointDesktop {
+    font-size: 0.75rem;
   }
 }
 
 .label-m {
-  font-size: 12px;
+  font-size: 0.75rem;
 
-  @include breakpointDesktop {
-    font-size: 14px;
+  @include mixins.breakpointDesktop {
+    font-size: 0.875rem;
   }
 }
 
 .label-l {
-  font-size: 18px;
+  font-size: 1.125rem;
 
-  @include breakpointDesktop {
-    font-size: 24px;
+  @include mixins.breakpointDesktop {
+    font-size: 1.5rem;
   }
 }
 
 .label-xl {
-  font-size: 22px;
+  font-size: 1.375rem;
 
-  @include breakpointDesktop {
-    font-size: 30px;
+  @include mixins.breakpointDesktop {
+    font-size: 1.875rem;
   }
 }
 
 .label-xxl {
-  font-size: 28px;
+  font-size: 1.75rem;
 
-  @include breakpointDesktop {
-    font-size: 34px;
+  @include mixins.breakpointDesktop {
+    font-size: 2.125rem;
   }
 }
 
 /* Text colors */
 
 .text-color-white {
-  color: var(--color-white)
+  color: var(--color-white);
 }
 
 .text-color-primary {
-  color: var(--color-primary)
+  color: var(--color-primary);
 }
 
 .text-color-primary-dark {
-  color: var(--color-primary-dark)
+  color: var(--color-primary-dark);
 }
 
 /* Text styles */
@@ -101,3 +112,21 @@ h5 {
   font-style: italic;
 }
 
+/* Focus styles */
+:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Accessibility helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -25,7 +25,7 @@ interface RecipesListProps {
 
 const props = withDefaults(defineProps<RecipesListProps>(), {
   recipes: [],
-  isFavoritesList: false
+  isFavoritesList: false,
 });
 
 const { openModal } = useModalStore();
@@ -35,7 +35,7 @@ const { query } = storeToRefs(useSearchStore());
 const filteredRecipes = computed(() => {
   const searchQuery = query.value.toLowerCase();
 
-  if(!props.recipes.length) return [];
+  if (!props.recipes.length) return [];
 
   return props.recipes.filter((recipe) => {
     const titleMatches = recipe.title.toLowerCase().includes(searchQuery);

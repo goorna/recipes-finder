@@ -2,14 +2,14 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 /**
- * Store for managing modal state across the application
+ * store for managing modal state across the application
  */
 export const useModalStore = defineStore("modal", () => {
   const recipeId = ref("");
   const isOpen = computed(() => Boolean(recipeId.value));
   
   /**
-   * Sets the recipe ID for the modal and updates the document body class
+   * sets the recipe ID for the modal and updates the document body class
    * @param newRecipeId - ID of the recipe to display in modal, or empty string to close
    */
   const setModalRecipeId = (newRecipeId: string = "") => {
@@ -18,8 +18,8 @@ export const useModalStore = defineStore("modal", () => {
   };
   
   /**
-   * Opens the modal with the specified recipe
-   * @param id - The ID of the recipe to display
+   * opens the modal with the specified recipe
+   * @param id - the ID of the recipe to display
    */
   const openModal = (id: string) => {
     setModalRecipeId(id);

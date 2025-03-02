@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     plugins: [svgLoader({})],
   },
 
-  modules: ["@nuxt/image", "@pinia/nuxt"],
+  modules: ["@nuxt/image", "@pinia/nuxt", "@nuxt/test-utils/module"],
 
   plugins: [
     '~/plugins/url',

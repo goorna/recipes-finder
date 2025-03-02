@@ -1,6 +1,6 @@
 <template>
   <div v-if="recipeDetails" class="modal">
-    <div class="modal-container">
+    <div class="modal-container modal-text" role="dialog" aria-modal="true">
       <div class="modal-container__header">
         <span>{{ recipeDetails.title }}</span>
         <div>
@@ -44,7 +44,7 @@
               <span>servings</span>
             </div>
           </div>
-          <p class="recipe-description">
+          <p>
             {{ recipeDetails.description }}
           </p>
           <h5 class="label-l text-color-primary text-italic">
@@ -127,7 +127,7 @@ const handleFavoriteClick = () => {
   if (isFavorite.value) {
     removeFromFavorites(recipeDetails.value.id);
   } else {
-    addToFavorites(recipeDetails.value.id);
+    addToFavorites(recipeDetails.value?.id);
   }
 };
 
@@ -140,7 +140,6 @@ const setIsFavorite = () => {
 onMounted(setIsFavorite);
 
 watch(() => props.favorites, setIsFavorite);
-
 </script>
 
 <style lang="scss" scoped>

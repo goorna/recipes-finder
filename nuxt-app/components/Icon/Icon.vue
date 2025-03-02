@@ -1,7 +1,7 @@
 <template>
   <component
     :is="icon"
-    v-if="iconExists"
+    v-if="icon"
     :class="['icon', sizeClass, colorClass]"
   ></component>
 </template>
@@ -24,16 +24,19 @@ const icon = shallowRef();
 const colorClass = computed(() => `icon--${props.color}`);
 const sizeClass = computed(() => `icon--${props.size}`);
 
+/**
+ * dynamically imports and loads an icon component when the component is mounted.
+ *
+ *
+ * if the icon is imported, it's converted to an async component
+ *
+ */
 onMounted(async () => {
   try {
-    const iconComponent = await import(
-      `./Icons/${props.name}Icon.vue`
-    );
+    const iconComponent = await import(`./Icons/${props.name}Icon.vue`);
     icon.value = defineAsyncComponent(() => Promise.resolve(iconComponent));
-    iconExists.value = true;
   } catch (error) {
     console.warn(`Icon ${props.name} not found`);
-    iconExists.value = false;
   }
 });
 </script>

@@ -1,6 +1,20 @@
 import { useFetch } from "nuxt/app";
 import type { Recipe } from "~/types/api/recipe";
 
+
+/**
+ * fetches details for a specific recipe by its ID.
+ * 
+ * @async
+ * @function getRecipeDetails
+ * @param {string} recipeId
+ * @returns {Promise<Recipe|null>}
+ * 
+ * @throws {Error} If the API request fails (error will be logged to console)
+ * 
+ * Note: Currently uses a hardcoded UUID in the API path. 
+ */
+
 export const getRecipeDetails = async (recipeId: string) => {
   const {
     public: { apiUrl },

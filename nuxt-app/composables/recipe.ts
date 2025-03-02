@@ -20,6 +20,20 @@ interface UseRecipeReturn {
   recipeDetails: Ref<RecipeDetails | null>;
 }
 
+/**
+ * this composable handles the loading of recipe details either from favorites
+ * or from an external source. It automatically reacts to changes in the recipeId
+ * from the modal store and updates the recipe details accordingly.
+ *
+ * @function useRecipe
+ * @returns {UseRecipeReturn} An object containing the recipe details ref
+ *
+ * @example
+ * const { recipeDetails } = useRecipe();
+ * // recipeDetails will automatically update when recipeId changes
+ *
+ */
+
 export const useRecipe = (): UseRecipeReturn => {
   const { recipeId } = storeToRefs(useModalStore());
   const { loadFromFavorites } = useFavoritesStore();
@@ -29,10 +43,9 @@ export const useRecipe = (): UseRecipeReturn => {
   watchEffect(async () => {
     if (!recipeId.value) return;
 
-
     let recipe = loadFromFavorites(recipeId.value);
 
-    if(!recipe) {
+    if (!recipe) {
       recipe = await getRecipeDetails(recipeId.value);
     }
 
@@ -56,4 +69,3 @@ export const useRecipe = (): UseRecipeReturn => {
     recipeDetails,
   };
 };
-
