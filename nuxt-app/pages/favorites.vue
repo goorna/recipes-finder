@@ -9,7 +9,7 @@
 import { storeToRefs } from "pinia";
 import { useFavoritesStore } from "~/stores/favorites";
 import { getRecipesList } from "~/services/recipes/list";
-import { Recipe } from "~/types/api/recipe";
+import type { Recipe } from "~/types/api/recipe";
 import RecipesList from "~/components/RecipesList/RecipesList.vue";
 
 const recipes = ref<Recipe[]>([]);

@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-
 export interface ChipProps {
   label: string;
 }

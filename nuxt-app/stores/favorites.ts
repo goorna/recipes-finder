@@ -2,6 +2,11 @@ import { defineStore } from "pinia";
 import { getRecipeDetails } from "~/services/recipes/details";
 import type { Recipe } from "~/types/api/recipe";
 
+/**
+ * store for managing favorite recipes
+ * handles adding, removing, and loading recipes from localStorage
+ */
+
 export const useFavoritesStore = defineStore("favorites", () => {
 
   const favorites = ref<Recipe[]>([]);
@@ -78,7 +83,11 @@ export const useFavoritesStore = defineStore("favorites", () => {
 
   onMounted(() => {
     const storedFavorites = localStorage.getItem("favorites");
-    favorites.value = storedFavorites ? JSON.parse(storedFavorites) : [];
+    try {
+      favorites.value = storedFavorites ? JSON.parse(storedFavorites) : [];
+    } catch {
+      console.error("Error parsing favorites from localStorage:", storedFavorites)
+    }
   })
 
   return { favorites, loadFromFavorites, addToFavorites, removeFromFavorites };
