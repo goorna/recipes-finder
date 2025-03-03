@@ -97,6 +97,7 @@ Start the development server on http://localhost:3000:
 - Improve test code coverage 
 - Hooks pre-commit/pre-push
 - Merge request template
+- Recipe images would be hosted remotely, not within the project
 
 ## Choices and Limitations
 - **API:** I used a mocking service and the same endpoint for both the list and the details. Normally, I would expect two separate endpoints.  
