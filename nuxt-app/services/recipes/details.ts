@@ -20,7 +20,7 @@ export const getRecipeDetails = async (recipeId: string) => {
     public: { apiUrl },
   } = useRuntimeConfig();
 
-  const { data: recipes } = await useFetch(`${apiUrl}/637a1343-e246-4416-a910-5afcce08ff56`, {
+  const { data: recipes } = await useFetch(`${apiUrl}/1163eb8e-983f-47b7-94d6-5bf6b605f574`, {
     key: "recipe-details",
     method: "GET",
     onResponseError: () => {
