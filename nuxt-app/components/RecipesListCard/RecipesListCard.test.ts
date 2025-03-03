@@ -94,7 +94,7 @@ describe("RecipesListCard Component", () => {
     expect(title.text()).toBe("Pasta Carbonara");
 
     // check if the description is rendered
-    const description = wrapper.find(".recipe-card-description");
+    const description = wrapper.find(".recipe-description");
     expect(description.exists()).toBe(true);
     expect(description.text()).toBe("test desc");
 
